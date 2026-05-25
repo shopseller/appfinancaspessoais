@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinançasPro — Gestão Financeira Pessoal
 
-## Getting Started
+App web para controle de finanças pessoais com dashboard visual, CRUD de transações, filtros e exportação CSV.
 
-First, run the development server:
+**Stack:** Next.js 16 · TypeScript · Tailwind CSS · Supabase · Recharts
+
+## Configuração
+
+### 1. Supabase
+
+1. Crie um projeto em [supabase.com](https://supabase.com)
+2. Vá em **SQL Editor** e execute o conteúdo de `supabase/schema.sql`
+3. Copie a **URL** e a **anon key** do projeto (Settings → API)
+
+### 2. Variáveis de ambiente
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.local.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Preencha `.env.local`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua-anon-key-aqui
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Instalar e rodar
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Acesse [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Funcionalidades
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Autenticação** — Login e cadastro com e-mail/senha (Supabase Auth)
+- **Dashboard** — Cards de Receitas, Despesas e Saldo + Gráfico de pizza por categoria
+- **Transações** — Criar, editar e excluir com descrição, valor, data, tipo e categoria
+- **Categorias** — Alimentação, Transporte, Moradia, Lazer, Saúde, Educação, Salário, Freelance, Outros
+- **Filtros** — Por mês, ano, categoria e busca por descrição
+- **CSV** — Exportar transações filtradas
+- **Responsivo** — Sidebar desktop + nav mobile
 
-## Deploy on Vercel
+## Deploy na Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Conecte o repositório GitHub na Vercel
+2. Adicione as variáveis de ambiente `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Deploy!
